@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscribe | MixGT</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Manrope,sans-serif;
+}
+
+body{
+    background:#07111d;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow-x:hidden;
+    position:relative;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:#1b63c6;
+    border-radius:50%;
+    filter:blur(180px);
+    opacity:.18;
+    top:-180px;
+    right:-180px;
+}
+
+body::after{
+    content:"";
+    position:absolute;
+    width:400px;
+    height:400px;
+    background:#caff48;
+    border-radius:50%;
+    filter:blur(180px);
+    opacity:.10;
+    bottom:-120px;
+    left:-120px;
+}
+
+.card{
+    width:950px;
+    max-width:92%;
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    display:grid;
+    grid-template-columns:40% 60%;
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+    position:relative;
+    z-index:2;
+}
+
+.left{
+    background:linear-gradient(160deg,#08111e,#143b68);
+    color:#fff;
+    padding:60px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo{
+    font-size:42px;
+    font-weight:800;
+}
+
+.logo span{
+    color:#caff48;
+}
+
+.tag{
+    margin-top:20px;
+    line-height:1.8;
+    opacity:.85;
+}
+
+.right{
+    padding:60px;
+}
+
+.right h1{
+    color:#111;
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.right p{
+    color:#666;
+    margin-bottom:30px;
+}
+
+input{
+    width:100%;
+    padding:17px;
+    margin-bottom:18px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#1b63c6;
+    box-shadow:0 0 0 4px rgba(27,99,198,.15);
+}
+
+button{
+    width:100%;
+    padding:18px;
+    background:#caff48;
+    border:none;
+    border-radius:10px;
+    font-size:17px;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#b7ec37;
+    transform:translateY(-2px);
+}
+
+.small{
+    margin-top:20px;
+    text-align:center;
+    color:#888;
+    font-size:13px;
+}
+
+.success{
+    display:none;
+    text-align:center;
+    margin-top:30px;
+    padding:25px;
+    background:#f5fff0;
+    border:1px solid #d7f5a2;
+    border-radius:12px;
+}
+
+.success h2{
+    color:#143b68;
+    margin-bottom:10px;
+}
+
+.success p{
+    color:#555;
+    margin:0;
+}
+
+@media(max-width:850px){
+
+.card{
+grid-template-columns:1fr;
+}
+
+.left,
+.right{
+padding:40px;
+}
+
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="left">
+
+<div class="logo">
+MIX<span>GT</span>
+</div>
+
+<div class="tag">
+Stay connected with our latest products,
+technology updates and smart solutions.
+</div>
+
+</div>
+
+<div class="right">
+
+<h1>Subscribe</h1>
+
+<p>
+Join our newsletter and never miss our latest updates.
+</p>
+
+<form id="subscribeForm">
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="email" placeholder="Email Address" required>
+
+<input type="tel" placeholder="Phone Number" required>
+
+<button type="submit">
+SUBSCRIBE NOW →
+</button>
+
+</form>
+
+<div class="success" id="success">
+
+<h2>🎉 Welcome to MixGT!</h2>
+
+<p>
+Thank you for subscribing.<br>
+You'll now receive our latest products, technology updates, project highlights, and exclusive insights.
+</p>
+
+</div>
+
+<div class="small">
+We respect your privacy. No spam. Unsubscribe anytime.
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const form=document.getElementById("subscribeForm");
+const success=document.getElementById("success");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const inputs = form.querySelectorAll("input");
+
+fetch("http://localhost:3000/subscribe", {
+    method:"POST",
+    headers:{
+        "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+        name: inputs[0].value,
+        email: inputs[1].value,
+        phone: inputs[2].value
+    })
+}).catch(() => {});
+
+form.style.display="none";
+success.style.display="block";
+
+});
+
+
+
+</script>
+
+</body>
+</html>
