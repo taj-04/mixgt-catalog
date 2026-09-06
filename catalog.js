@@ -518,6 +518,7 @@ const samsungOutdoorLineups = [
 ];
 
 
+
 /* =========================================================
    SAMSUNG SEMI-OUTDOOR LINEUPS
    ========================================================= */
@@ -533,6 +534,23 @@ const samsungSemiOutdoorLineups = [
       '24/7'
     ],
     sheetUrl: 'samsung-pdfs/SAMSUNG-OMN-INE-UP-SHEET.pdf.pdf'
+  }
+];
+/* =========================================================
+   SAMSUNG VIDEO WALL LINEUPS
+   ========================================================= */
+
+const samsungVideoWallLineups = [
+  {
+    id: 'video-wall',
+    name: 'Video Wall',
+    features: [
+      'Ultra Narrow Bezel',
+      'Professional Video Wall',
+      '24/7 Operation',
+      'Control Rooms & Commercial Spaces'
+    ],
+    sheetUrl: 'samsung-pdfs/Samsung Video Wall Displays Series_Leaflet_WEB.pdf'
   }
 ];
 
@@ -1127,6 +1145,19 @@ function renderSamsungSemiOutdoorLineups() {
     true
   );
 }
+/* =========================================================
+   RENDER SAMSUNG VIDEO WALL LINEUPS
+   ========================================================= */
+
+function renderSamsungVideoWallLineups() {
+
+  renderSamsungLineups(
+    samsungVideoWallLineups,
+    'Video Wall',
+    true
+  );
+
+}
 
 
 /* =========================================================
@@ -1286,6 +1317,20 @@ groupGrid.addEventListener('click', event => {
   }
 
 
+  /* SAMSUNG VIDEO WALL */
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'videowall'
+  ) {
+
+    renderSamsungVideoWallLineups();
+
+    return;
+  }
+
+  // باقي الكود عندك...س
+
   /* SAMSUNG OUTDOOR */
 
   if (
@@ -1297,6 +1342,7 @@ groupGrid.addEventListener('click', event => {
 
     return;
   }
+
 
 
   /* SAMSUNG SEMI-OUTDOOR */
