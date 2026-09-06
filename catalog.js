@@ -1,17 +1,13 @@
 const brands = [
   { id: 'samsung', name: 'SAMSUNG', className: 'samsung' },
-  { id: 'absen', name: 'Absen', className: 'absen' },
   { id: 'fabulux', name: 'FABULUX LED', className: 'fabulux' },
   { id: 'cletech', name: 'cletech', className: 'cletech' },
-  { id: 'leyard', name: 'LEYARD', className: 'leyard' },
-  { id: 'nexvoo', name: 'nexvoo', className: 'nexvoo' },
   { id: 'par', name: 'PAR', className: 'par' },
   { id: 'dahua', name: 'DAHUA', className: 'dahua' },
   { id: 'peerless', name: 'peerless-AV', className: 'peerless' }
 ];
 
 const groups = [
-  
   {
     id: 'indoor',
     name: 'Indoor',
@@ -43,44 +39,44 @@ const groups = [
     description: 'Specialist LED display solutions'
   }
 ];
+
+
 /* =========================================================
    SAMSUNG INDOOR LINEUPS
    ========================================================= */
 
 const samsungIndoorLineups = [
   {
-    id: 'qmc',
-    name: 'QMC',
-    features: [
-      'Key Feature 01',
-      'Key Feature 02',
-      'Key Feature 03'
-    ],
-    sheetUrl: ''
-  },
-
-  {
     id: 'qhc',
     name: 'QHC',
     features: [
-      'Key Feature 01',
-      'Key Feature 02',
-      'Key Feature 03'
+      'Brightness:700',
+      '24/7'
     ],
-    sheetUrl: ''
+    sheetUrl: 'samsung-pdfs/SAMSUNG-QHC-LINE-UP-SHEET.pdf.pdf'
   },
 
   {
-    id: 'qmb',
-    name: 'QMB',
+    id: 'qmc',
+    name: 'QMC',
     features: [
-      'Key Feature 01',
-      'Key Feature 02',
-      'Key Feature 03'
+      'Brightness:500',
+      '24/7'
     ],
-    sheetUrl: ''
+    sheetUrl: 'samsung-pdfs/SAMSUNG-QMC-LINE-UP-SHEET.pdf.pdf'
+  },
+
+  {
+    id: 'qbc',
+    name: 'QBC',
+    features: [
+      'Brightness:350',
+      '16/7'
+    ],
+    sheetUrl: 'samsung-pdfs/SAMSUNG-QBC-LINE-UP-SHEET.pdf.pdf'
   }
 ];
+
 
 /* =========================================================
    IMAGE HELPER
@@ -502,11 +498,50 @@ const samsungProducts = [
     manualUrl: 'samsung-pdfs/QHFX_LH115QHFEBGXUE.pdf'
   }
 ];
-const dahuaProducts = [
-  /* =========================================================
+
+
+/* =========================================================
+   SAMSUNG OUTDOOR LINEUPS
+   ========================================================= */
+
+const samsungOutdoorLineups = [
+  {
+    id: 'oh',
+    name: 'OH',
+    features: [
+      'Outdoor Signage',
+      'High Brightness',
+      'IP56'
+    ],
+    sheetUrl: 'samsung-pdfs/SAMSUNG-OH-LINE-UP-SHEET.pdf'
+  }
+];
+
+
+/* =========================================================
+   SAMSUNG SEMI-OUTDOOR LINEUPS
+   ========================================================= */
+
+const samsungSemiOutdoorLineups = [
+  {
+    id: 'omn',
+    name: 'OMN',
+    features: [
+      'Window Display',
+      'High Brightness',
+      'Slim Design',
+      '24/7'
+    ],
+    sheetUrl: 'samsung-pdfs/SAMSUNG-OMN-INE-UP-SHEET.pdf.pdf'
+  }
+];
+
+
+/* =========================================================
    DAHUA PRODUCTS
    ========================================================= */
 
+const dahuaProducts = [
 
   {
     no: 330,
@@ -625,8 +660,8 @@ const dahuaProducts = [
     manualUrl: null
   }
 
-
 ];
+
 
 /* =========================================================
    OTHER BRANDS
@@ -635,38 +670,6 @@ const dahuaProducts = [
 const products = [
   ...samsungProducts,
   ...dahuaProducts,
-  {
-    brand: 'absen',
-    group: 'indoor',
-    title: 'Fine-Pitch Indoor LED',
-    use: 'High-resolution content for indoor spaces, events, and control rooms.',
-    color: '#c26633',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
-
-  {
-    brand: 'absen',
-    group: 'outdoor',
-    title: 'Outdoor LED Display',
-    use: 'Digital advertising and outdoor visual boards that remain clear in direct sunlight.',
-    color: '#94502e',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
-
-  {
-    brand: 'absen',
-    group: 'semi-outdoor',
-    title: 'Retail & Entrance LED',
-    use: 'LED installations for sheltered entrances, concourses, and high-ambient-light spaces.',
-    color: '#a75a31',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
 
   {
     brand: 'fabulux',
@@ -707,39 +710,6 @@ const products = [
     title: 'Interactive Meeting Display',
     use: 'Collaboration, whiteboarding, and presentations in training and meeting rooms.',
     color: '#5c6774',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
-
-  {
-    brand: 'leyard',
-    group: 'videowall',
-    title: 'Premium LED Video Wall',
-    use: 'Advanced display for executive rooms, studios, and operations centres.',
-    color: '#a84343',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
-
-  {
-    brand: 'leyard',
-    group: 'outdoor',
-    title: 'Outdoor LED Display',
-    use: 'Reliable large-format communication for public spaces, venues, and advertising.',
-    color: '#7a3338',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
-
-  {
-    brand: 'nexvoo',
-    group: 'interactive',
-    title: 'Smart Meeting Board',
-    use: 'Integrated video meetings and hybrid collaboration for teams anywhere.',
-    color: '#566271',
     manualUrl: null,
     link: null,
     image: null
@@ -887,6 +857,35 @@ imageStyles.textContent = `
     color: #687482;
     word-break: break-all;
   }
+
+  /* Samsung lineup area */
+  .samsung-lineups-wrapper {
+    grid-column: 1 / -1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 8px;
+  }
+
+  .samsung-lineups-title {
+    grid-column: 1 / -1;
+    margin: 4px 0 0;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .samsung-lineup-card {
+    width: 100%;
+  }
+
+  @media (max-width: 700px) {
+    .samsung-lineups-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 document.head.appendChild(imageStyles);
@@ -944,13 +943,6 @@ function selectBrand(id) {
     window.innerWidth < 700
       ? 'repeat(2, 1fr)'
       : 'repeat(3, 1fr)';
-  if (
-  selectedBrandId === 'samsung' &&
-  id === 'indoor'
-) {
-  renderSamsungIndoorLineups();
-  return;
-}
 
   const availableGroups = groups.filter(group =>
     products.some(product =>
@@ -960,11 +952,6 @@ function selectBrand(id) {
   );
 
   groupGrid.innerHTML = availableGroups.map((group, index) => {
-
-    const count = products.filter(product =>
-      product.brand === selectedBrandId &&
-      product.group === group.id
-    ).length;
 
     return `
       <button
@@ -981,10 +968,6 @@ function selectBrand(id) {
 
         <p>
           ${group.description}
-          <br>
-          <strong>
-            ${count} display${count === 1 ? '' : 's'}
-          </strong>
         </p>
 
         <b>↗</b>
@@ -1002,36 +985,41 @@ function selectBrand(id) {
     block: 'start'
   });
 }
+
+
 /* =========================================================
-   RENDER SAMSUNG INDOOR LINEUPS
+   SAMSUNG LINEUP GROUP RENDERER
+   Keeps the original GROUPS visible above the lineups
    ========================================================= */
 
-function renderSamsungIndoorLineups() {
+function renderSamsungLineups(lineups, groupName, showPdf = false) {
 
   const brand = brandById('samsung');
 
   document.getElementById('selectedBrandLabel').textContent =
-    `${brand.name} / Indoor`;
+    `${brand.name} / ${groupName}`;
 
-  groupGrid.style.gridTemplateColumns =
-    window.innerWidth < 700
-      ? '1fr'
-      : 'repeat(3, 1fr)';
+  /*
+     IMPORTANT:
+     Do NOT replace groupGrid completely.
 
-  groupGrid.innerHTML = samsungIndoorLineups.map((lineup, index) => {
+     We keep the existing group buttons and append
+     the Samsung lineups underneath them.
+  */
 
-    const hasSheet = lineup.sheetUrl && lineup.sheetUrl.trim() !== '';
+  const lineupHTML = lineups.map((lineup, index) => {
 
     return `
-      <div class="group-card samsung-lineup-card">
+      <div
+        class="group-card samsung-lineup-card"
+        data-lineup="${lineup.id}"
+      >
 
         <span>
           ${String(index + 1).padStart(2, '0')}
         </span>
 
-        <h3>
-          ${lineup.name}
-        </h3>
+        <h3>${lineup.name}</h3>
 
         <ul class="lineup-features">
           ${lineup.features.map(feature => `
@@ -1040,22 +1028,19 @@ function renderSamsungIndoorLineups() {
         </ul>
 
         ${
-          hasSheet
+          showPdf && lineup.sheetUrl
             ? `
               <a
-                class="lineup-sheet-link"
                 href="${lineup.sheetUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
+                class="lineup-sheet-link"
+                onclick="event.stopPropagation();"
               >
-                View Product Sheet ↗
+                View Line Up Sheet ↗
               </a>
             `
-            : `
-              <span class="lineup-sheet-link lineup-sheet-disabled">
-                Product Sheet — Coming Soon
-              </span>
-            `
+            : ''
         }
 
         <b>↗</b>
@@ -1065,6 +1050,34 @@ function renderSamsungIndoorLineups() {
 
   }).join('');
 
+
+  /*
+     The wrapper spans the full width of the group grid,
+     so all original groups stay ABOVE it.
+  */
+
+  const existingGroups = groupGrid.innerHTML;
+
+  groupGrid.innerHTML = `
+    ${existingGroups}
+
+    <div class="samsung-lineups-wrapper">
+
+      <div class="samsung-lineups-title">
+        ${groupName} Lineups
+      </div>
+
+      ${lineupHTML}
+
+    </div>
+  `;
+
+
+  groupGrid.style.gridTemplateColumns =
+    window.innerWidth < 700
+      ? 'repeat(2, 1fr)'
+      : 'repeat(3, 1fr)';
+
   groupsSection.hidden = false;
   productsSection.hidden = true;
 
@@ -1073,6 +1086,48 @@ function renderSamsungIndoorLineups() {
     block: 'start'
   });
 }
+
+
+/* =========================================================
+   RENDER SAMSUNG INDOOR LINEUPS
+   ========================================================= */
+
+function renderSamsungIndoorLineups() {
+
+  renderSamsungLineups(
+    samsungIndoorLineups,
+    'Indoor',
+    true
+  );
+}
+
+
+/* =========================================================
+   RENDER SAMSUNG OUTDOOR LINEUPS
+   ========================================================= */
+
+function renderSamsungOutdoorLineups() {
+  renderSamsungLineups(
+    samsungOutdoorLineups,
+    'Outdoor',
+    true
+  );
+}
+
+
+/* =========================================================
+   RENDER SAMSUNG SEMI-OUTDOOR LINEUPS
+   ========================================================= */
+
+function renderSamsungSemiOutdoorLineups() {
+
+  renderSamsungLineups(
+    samsungSemiOutdoorLineups,
+    'Semi-Outdoor',
+    true
+  );
+}
+
 
 /* =========================================================
    SELECT GROUP
@@ -1209,19 +1264,55 @@ grid.addEventListener('click', event => {
 
 groupGrid.addEventListener('click', event => {
 
-  const button = event.target.closest('[data-group]');
+  const button =
+    event.target.closest('[data-group]');
 
   if (!button) return;
 
-  const groupId = button.dataset.group;
+  const groupId =
+    button.dataset.group;
+
+
+  /* SAMSUNG INDOOR */
 
   if (
     selectedBrandId === 'samsung' &&
     groupId === 'indoor'
   ) {
+
     renderSamsungIndoorLineups();
+
     return;
   }
+
+
+  /* SAMSUNG OUTDOOR */
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'outdoor'
+  ) {
+
+    renderSamsungOutdoorLineups();
+
+    return;
+  }
+
+
+  /* SAMSUNG SEMI-OUTDOOR */
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'semi-outdoor'
+  ) {
+
+    renderSamsungSemiOutdoorLineups();
+
+    return;
+  }
+
+
+  /* ALL OTHER BRANDS / GROUPS */
 
   selectGroup(groupId);
 
@@ -1516,5 +1607,8 @@ if (
     brand => brand.id === requestedBrand
   )
 ) {
+
   selectBrand(requestedBrand);
+
 }
+
