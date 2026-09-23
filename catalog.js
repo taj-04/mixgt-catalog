@@ -1,7 +1,6 @@
 const brands = [
   { id: 'samsung', name: 'SAMSUNG', className: 'samsung' },
   { id: 'fabulux', name: 'FABULUX LED', className: 'fabulux' },
-  { id: 'cletech', name: 'cletech', className: 'cletech' },
   { id: 'par', name: 'PAR', className: 'par' },
   { id: 'dahua', name: 'DAHUA', className: 'dahua' },
   { id: 'peerless', name: 'peerless-AV', className: 'peerless' }
@@ -77,7 +76,422 @@ const samsungIndoorLineups = [
   }
 ];
 
+  const dahuaIndoorLineups = [
+  {
+    id: 'ldv-43',
+    name: 'LDV-43',
+    features: [
+      '4K UHD — 3840 × 2160',
+      'Response Time: 8 ms'
+    ],
+    sheetUrl: 'samsung-pdfs/LDV43-SAI400L_20241113.pdf'
+  },
 
+  {
+    id: 'ldv-55',
+    name: 'LDV-55',
+    features: [
+      'Brightness: 320 cd/m²',
+      'Response Time: 8 ms'
+    ],
+    sheetUrl: 'samsung-pdfs/LDV55-SAI400K(NEW)_Datasheet_1227.pdf'
+  },
+
+  {
+    id: 'ldv-65',
+    name: 'LDV-65',
+    features: [
+      'Brightness: 320 cd/m²',
+      'Storage: 32 GB'
+    ],
+    sheetUrl: 'samsung-pdfs/LDV65-SAI400K(NEW)_Datasheet_1227.pdf'
+  }
+];
+ const dahuaVideoWallLineups = [
+  {
+    id: 'dahua-video-wall',
+    name: 'DAHUA VIDEO WALL',
+    features: [
+      '55-inch FHD Video Wall',
+      '24/7 Operation',
+      'Ultra-Narrow Bezel',
+      'Professional LCD Video Wall'
+    ],
+    sheetUrl: 'samsung-pdfs/DHI-LS550UEM-EG_Datasheet_2022.10.pdf'
+  }
+];
+const dahuaLedLineups = [
+  {
+    id: 'dahua-led',
+    name: 'DAHUA LED',
+    features: [
+      'Fine Pixel Pitch LED Display',
+      'High Brightness',
+      'Professional LED Display',
+      'DHI-PHSIA1.8-LF'
+    ],
+    sheetUrl: 'samsung-pdfs/DHI-PHSIA1.8-LF_Datasheet20230421.pdf'
+  }
+];
+const peerlessLineups = [
+  {
+    id: 'peerless-video-wall',
+    name: 'VIDEO WALL MOUNTS',
+    category: 'VIDEO WALL',
+    features: [
+      'Professional Video Wall Mounting',
+      'Full-Service Installation',
+      'Quick Release Options',
+      'Multiple Display Configurations'
+    ],
+    products: [
+      'DS-VW765-LQR',
+      'DS-VW775',
+      'DS-VW775-QR'
+    ],
+    sheetUrl: 'samsung-pdfs/DS-VW795-QR-Product-Datasheet.pdf'
+  },
+
+
+
+  {
+    id: 'peerless-display-mounts',
+    name: 'DISPLAY MOUNTS',
+    category: 'DISPLAY MOUNTS',
+    features: [
+      'Universal Display Mounts',
+      'Wall & Ceiling Solutions',
+      'Tilt & Articulating Options',
+      'Professional AV Installation'
+    ],
+    products: [
+      'STS680',
+      'PCM150',
+      'SA752PU'
+    ],
+    sheetUrl: 'samsung-pdfs/sf630-Product-Datasheet.pdf'
+  },
+
+  {
+    id: 'trolleys',
+    name: 'TROLLEYS',
+    category: 'TROLLEYS',
+    features: [
+      'Mobile Display Solutions',
+      'Professional Video Wall Carts',
+      'Adjustable & Modular Designs',
+      'Integrated Cable Management'
+    ],
+    products: [
+      'SR860',
+      'SR898',
+      'DS-C555-4X2'
+    ],
+    sheetUrls: [
+  'samsung-pdfs/TRVT586.pdf',
+  'samsung-pdfs/TRVT-FLIP2.pdf',
+  'samsung-pdfs/SELL SHEET-LIT1359-1-7-1.PDF',
+  'samsung-pdfs/PR565ML3-EUK1086401758.pdf'
+]
+  },
+
+  
+  
+];
+function renderPeerlessLineups() {
+
+  const brand = brandById('peerless');
+
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / SOLUTIONS`;
+
+  const lineupHTML = peerlessLineups.map((lineup, index) => {
+
+    return `
+      <div
+        class="group-card samsung-lineup-card"
+        data-peerless-lineup="${lineup.id}"
+      >
+
+        <span>
+          ${String(index + 1).padStart(2, '0')}
+        </span>
+
+        <span class="lineup-category">
+          ${lineup.category}
+        </span>
+
+        <h3>${lineup.name}</h3>
+
+        <ul class="lineup-features">
+          ${lineup.features.map(feature => `
+            <li>${feature}</li>
+          `).join('')}
+        </ul>
+
+        <div class="lineup-products">
+          ${lineup.products.join(' · ')}
+        </div>
+
+        ${
+  lineup.sheetUrls && lineup.sheetUrls.length
+    ? `
+      <div class="lineup-sheets">
+        ${lineup.sheetUrls.map((sheet, sheetIndex) => `
+          <a
+            href="${sheet}"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="lineup-sheet-link"
+            onclick="event.stopPropagation();"
+          >
+            View Data Sheet ${lineup.sheetUrls.length > 1 ? sheetIndex + 1 : ''} ↗
+          </a>
+        `).join('')}
+      </div>
+    `
+    : lineup.sheetUrl
+      ? `
+        <a
+          href="${lineup.sheetUrl}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="lineup-sheet-link"
+          onclick="event.stopPropagation();"
+        >
+          View Data Sheet ↗
+        </a>
+      `
+      : ''
+}
+
+        <b>↗</b>
+
+      </div>
+    `;
+
+  }).join('');
+
+  const existing =
+    groupGrid.querySelector('.peerless-lineups-wrapper');
+
+  if (existing) {
+    existing.remove();
+  }
+
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div class="peerless-lineups-wrapper">
+
+      <div class="samsung-lineups-title">
+        PEERLESS-AV
+        <span>/</span>
+        SOLUTIONS
+      </div>
+
+      <div class="peerless-lineups-grid">
+        ${lineupHTML}
+      </div>
+
+    </div>
+  `);
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+}
+function renderDahuaLedLineups() {
+
+  const brand = brandById('dahua');
+  const group = groupById('led');
+
+  const lineups = dahuaLedLineups;
+
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / ${group.name}`;
+
+  const lineupHTML = lineups.map((lineup, index) => {
+
+    return `
+      <div
+        class="group-card dahua-lineup-card"
+        data-dahua-led-lineup="${lineup.id}"
+      >
+
+        <span>
+          ${String(index + 1).padStart(2, '0')}
+        </span>
+
+        <h3>${lineup.name}</h3>
+
+        <ul class="lineup-features">
+          ${lineup.features.map(feature => `
+            <li>${feature}</li>
+          `).join('')}
+        </ul>
+
+        ${
+          lineup.sheetUrl
+            ? `
+              <a
+                href="${lineup.sheetUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lineup-sheet-link"
+                onclick="event.stopPropagation();"
+              >
+                View Data Sheet ↗
+              </a>
+            `
+            : ''
+        }
+
+        <b>↗</b>
+
+      </div>
+    `;
+
+  }).join('');
+
+  const existingLineups =
+    groupGrid.querySelector('.dahua-lineups-wrapper');
+
+  if (existingLineups) {
+    existingLineups.remove();
+  }
+
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div
+      class="dahua-lineups-wrapper"
+      data-lineup-view="dahua"
+    >
+
+      <div class="samsung-lineups-title">
+        DAHUA
+        <span>/</span>
+        LED LINEUPS
+      </div>
+
+      <div class="lineups-subtitle">
+        Select a lineup to view its data sheet
+      </div>
+
+      <div class="dahua-lineups-grid">
+
+        ${
+          lineupHTML ||
+          `
+            <div class="empty-group">
+              <p>
+                LED lineup is being prepared.
+              </p>
+            </div>
+          `
+        }
+
+      </div>
+
+    </div>
+  `);
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+}
+function renderDahuaVideoWallLineups() {
+
+  const brand = brandById('dahua');
+  const group = groupById('videowall');
+
+  const lineups = dahuaVideoWallLineups;
+
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / ${group.name}`;
+
+  const lineupHTML = lineups.map((lineup, index) => {
+
+    return `
+      <div
+        class="group-card dahua-lineup-card"
+        data-dahua-videowall-lineup="${lineup.id}"
+      >
+
+        <span>
+          ${String(index + 1).padStart(2, '0')}
+        </span>
+
+        <h3>${lineup.name}</h3>
+
+        <ul class="lineup-features">
+          ${lineup.features.map(feature => `
+            <li>${feature}</li>
+          `).join('')}
+        </ul>
+
+        ${
+          lineup.sheetUrl
+            ? `
+              <a
+                href="${lineup.sheetUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lineup-sheet-link"
+                onclick="event.stopPropagation();"
+              >
+                View Data Sheet ↗
+              </a>
+            `
+            : ''
+        }
+
+        <b>↗</b>
+
+      </div>
+    `;
+
+  }).join('');
+
+  const existingLineups =
+    groupGrid.querySelector('.dahua-lineups-wrapper');
+
+  if (existingLineups) {
+    existingLineups.remove();
+  }
+
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div
+      class="dahua-lineups-wrapper"
+      data-lineup-view="dahua"
+    >
+
+      <div class="samsung-lineups-title">
+        DAHUA
+        <span>/</span>
+        VIDEO WALL LINEUPS
+      </div>
+
+      <div class="lineups-subtitle">
+        Select a lineup to view its data sheet
+      </div>
+
+      <div class="dahua-lineups-grid">
+
+        ${
+          lineupHTML ||
+          `
+            <div class="empty-group">
+              <p>
+                Video Wall lineup is being prepared.
+              </p>
+            </div>
+          `
+        }
+
+      </div>
+
+    </div>
+  `);
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+}
 /* =========================================================
    IMAGE HELPER
    ========================================================= */
@@ -518,7 +932,6 @@ const samsungOutdoorLineups = [
 ];
 
 
-
 /* =========================================================
    SAMSUNG SEMI-OUTDOOR LINEUPS
    ========================================================= */
@@ -536,6 +949,8 @@ const samsungSemiOutdoorLineups = [
     sheetUrl: 'samsung-pdfs/SAMSUNG-OMN-INE-UP-SHEET.pdf.pdf'
   }
 ];
+
+
 /* =========================================================
    SAMSUNG VIDEO WALL LINEUPS
    ========================================================= */
@@ -556,10 +971,114 @@ const samsungVideoWallLineups = [
 
 
 /* =========================================================
+   SAMSUNG INTERACTIVE LINEUPS
+   ========================================================= */
+
+const samsungInteractiveLineups = [
+  {
+    id: 'flip-pro',
+    name: 'Flip Pro',
+    features: [
+      'Interactive Display',
+      '4K UHD',
+      'Multi-Touch',
+      'Collaboration & Education'
+    ],
+    models: [
+      'WM55B',
+      'WM65B',
+      'WM75B',
+      'WM85B'
+    ],
+    sheetUrl: 'samsung-pdfs/WMB_Samsung_Flip_Pro_Brochure_WEB_240216.pdf'
+  },
+
+  
+  {
+    id: 'waf',
+    name: 'WAF',
+    features: [
+      'Interactive Display',
+      '4K UHD',
+      'IR Touch',
+      'Collaboration & Education'
+    ],
+    models: [
+      'WA65F',
+      'WA75F',
+      'WA86F'
+    ],
+    sheetUrl: 'samsung-pdfs/WAF_Interactive_Leaflet_V3_2_1.pdf'
+  }
+];
+
+
+/* =========================================================
+   FABULUX LED LINEUPS
+   ========================================================= */
+
+const fabuluxIndoorLineups = [
+  {
+    id: 't-series',
+    name: 'T-SERIES',
+    features: [
+      'High Brightness',
+      'Fine Pixel Pitch',
+      'Operation 24/7'
+    ],
+    sheetUrl: 'samsung-pdfs/T-series— the high perfermance Indoor Fixed Expert-2.pdf'
+  },
+  {
+    id: 't-cob',
+    name: 'T-COB',
+    features: [
+      'High Durability',
+      'Ultra-Fine Pixel Pitch',
+      'High Contrast'
+    ],
+    sheetUrl: 'samsung-pdfs/T- COB Series Brochure.pdf'
+
+  }
+  
+
+  
+];
+const fabuluxOutdoorLineups = [
+   {
+    id: 'pta-series',
+    name: 'PTA-SERIES',
+    features: [
+      '8,000 Nits High Brightness',
+      'IP68 Waterproof',
+      '30%+ Energy Saving'
+    ],
+    sheetUrl: 'samsung-pdfs/PTA Series-- 8000nits, available for P5.7, P6.6, P8, P10.pdf'
+  },
+
+  {
+     id: 'ptf-series',
+    name: 'PTF-SERIES',
+    features: [
+      '8,000 Nits High Brightness',
+      '13,000:1 High Contrast',
+      '50%+ Energy Saving'
+    ],
+    sheetUrl: 'samsung-pdfs/PTF 1935-- P3.91 6000 nits industy-only display.pdf'
+  }
+]
+
+
+/* =========================================================
    DAHUA PRODUCTS
    ========================================================= */
 
+
+
 const dahuaProducts = [
+
+  /* =========================
+     INDOOR
+     ========================= */
 
   {
     no: 330,
@@ -567,11 +1086,11 @@ const dahuaProducts = [
     group: 'indoor',
     title: 'LDV43-SAI400K',
     code: 'LDV43-SAI400K',
-    use: '43-inch vertical floor-standing digital signage for retail, hospitality, showrooms and commercial spaces.',
+    use: '43-inch vertical LCD digital signage for retail, hospitality, showrooms and commercial spaces.',
     color: '#315c7f',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1.0.01.14.11216/Images/LDV43-SAI400K_View_Front-logo.png',
-    link: 'https://www.dahuasecurity.com/my/products/Display--Control/LCD-Digital-Signage/SAI-Series/LDV43-SAI400K',
-    manualUrl: null
+    link: 'https://www.dahuasecurity.com/mena/products/All-Products/Display--Control/LCD-Digital-Signage/Standard-Series/LDV43-SAI400K',
+    manualUrl: 'dahua-pdfs/LDV43-SAI400K_20240421.pdf'
   },
 
   {
@@ -583,8 +1102,8 @@ const dahuaProducts = [
     use: '32-inch wall-mounted digital signage for retail, menus, hospitality and commercial environments.',
     color: '#315c7f',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20211214/LDH32-SAI200K.jpg',
-    link: 'https://www.dahuasecurity.com/in/products/All-Products/Display--Control/LCD-Digital-Signage/SAI-Series/LDH32-SAI200K',
-    manualUrl: null
+    link: 'https://www.dahuasecurity.com/in/products/Display--Control/LCD-Digital-Signage/SAI-Series/LDH32-SAI200K',
+    manualUrl: 'dahua-pdfs/LDH32-SAI200K_0718.pdf'
   },
 
   {
@@ -597,20 +1116,7 @@ const dahuaProducts = [
     color: '#315c7f',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20220602/LDH43-FAI400K.jpg',
     link: 'https://www.dahuasecurity.com/ar/products/All-Products/Display--Control/LCD-Digital-Signage/Lite-Series/LDH43-FAI400K',
-    manualUrl: null
-  },
-
-  {
-    no: 451,
-    brand: 'dahua',
-    group: 'indoor',
-    title: 'LDV65-SAI400K',
-    code: 'LDV65-SAI400K',
-    use: '65-inch vertical floor-standing digital signage for large retail, hospitality and commercial environments.',
-    color: '#315c7f',
-    image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20240924/LDV65-SAI400K_View_Front-logo.png',
-    link: 'https://www.dahuasecurity.com/kr/products/All-Products/Discontinued-Products/Display--Control/LDV65-SAI400K',
-    manualUrl: null
+    manualUrl: 'dahua-pdfs/LDH43-FAI400K_0718.pdf'
   },
 
   {
@@ -619,62 +1125,62 @@ const dahuaProducts = [
     group: 'indoor',
     title: 'LDH55-WAI200K',
     code: 'DHI-LDH55-WAI200K',
-    use: '55-inch high-brightness wall-mounted digital signage for storefronts, commercial spaces and bright environments.',
+    use: '55-inch high-brightness LCD digital signage for commercial spaces and bright indoor environments.',
     color: '#315c7f',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/cpq/prm-os-srv-res/smart/formal/Product/HQ/1.0.99.12.10266/Images/LDH55-WAI200K_View_Front-logo.png',
-    link: 'https://www.dahuasecurity.com/cz/products/All-Products/Display--Control/LCD-Digital-Signage/Pro-Series/LDH55-WAI200K',
-    manualUrl: null
+    link: 'https://www.dahuasecurity.com/la/products/All-Products/Display--Control/LCD-Digital-Signage/Pro-Series/LDH55-WAI200K',
+    manualUrl: 'dahua-pdfs/LDH55-WAI200K_20240416.pdf'
   },
 
+
+
+  /* =========================
+     VIDEO WALL
+     DAHUA MENA
+     ========================= */
+
   {
-    no: 453,
+    no: 470,
     brand: 'dahua',
     group: 'videowall',
     title: 'LS550UEM-EG',
     code: 'DHI-LS550UEM-EG',
-    use: '55-inch Full-HD video wall display with an ultra-narrow 0.88mm bezel for control rooms, monitoring centers and commercial spaces.',
+    use: '55-inch Full-HD LCD video wall display for control rooms, monitoring centers and commercial installations.',
     color: '#1a3459',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20220412/LS550UEM-EG.jpg',
-    link: 'https://www.dahuasecurity.com/tr/products/all-products/display--control/lcd-video-walls/essential-series/ls550uem-eg',
+    link: 'https://www.dahuasecurity.com/mena/solutions/SMBSolutions/newSmbSolutions/DisplayControl/Monitoring-Center',
     manualUrl: null
   },
 
   {
-    no: 454,
-    brand: 'dahua',
-    group: 'videowall',
-    title: 'LS550UDH-EG',
-    code: 'DHI-LS550UDH-EG',
-    use: '55-inch Full-HD video wall display with an ultra-narrow 1.74mm bezel for professional video wall installations.',
-    color: '#1a3459',
-    image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20220714/LS550UDH-EG.jpg',
-    link: 'https://www.dahuasecurity.com/tr/products/All-Products/Display--Control/LCD-Video-Walls/Essential-Series/LS550UDH-EG',
-    manualUrl: null
-  },
-
-  {
-    no: 455,
+    no: 471,
     brand: 'dahua',
     group: 'videowall',
     title: 'LS550UCM-UF',
     code: 'DHI-LS550UCM-UF',
-    use: '55-inch Full-HD video wall display with a 3.5mm ultra-narrow bezel for control rooms, meeting rooms and commercial spaces.',
+    use: '55-inch Full-HD LCD video wall display with 3.5mm ultra-narrow bezel for professional installations.',
     color: '#1a3459',
     image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20241110/LS550UCM-UF.jpg',
     link: 'https://www.dahuasecurity.com/mena/products/All-Products/Display--Control/LCD-Video-Walls/Ultra-Series/LS550UCM-UF',
-    manualUrl: null
+    manualUrl: 'dahua-pdfs/LS550UCM-UF_Datasheet_2024.11.pdf'
   },
 
+
+  /* =========================
+     LED
+     DAHUA MENA
+     ========================= */
+
   {
-    no: 464,
+    no: 480,
     brand: 'dahua',
     group: 'led',
-    title: 'DHI-PHSIA1.8-LF',
-    code: 'DHI-PHSIA1.8-LF',
-    use: 'Indoor fine-pixel-pitch LED display for premium indoor visual experiences, control rooms and commercial spaces.',
+    title: 'PHSIA1.5-SS',
+    code: 'DHI-PHSIA1.5-SS',
+    use: 'Indoor fine-pixel LED display for premium visual experiences, control rooms and commercial environments.',
     color: '#193a58',
-    image: 'https://www.dahuasecurity.com/asset/upload/uploads/soft/20240206/PHSIA1.8-LF.jpg',
-    link: 'https://www.dahuasecurity.com/ph/products/Display--Control/LED-Displays/Indoor-Fine-Pixel/PHSIA1.8-LF',
+    image: null,
+    link: 'https://www.dahuasecurity.com/mena/solutions/SMBSolutions/newSmbSolutions/DisplayControl/Conference-Room',
     manualUrl: null
   }
 
@@ -682,7 +1188,7 @@ const dahuaProducts = [
 
 
 /* =========================================================
-   OTHER BRANDS
+   OTHER BRANDS + FABULUX
    ========================================================= */
 
 const products = [
@@ -721,21 +1227,22 @@ const products = [
     link: null,
     image: null
   },
+{
+  brand: 'fabulux',
+  group: 'led',
+  title: 'Fabulux LED Lineups',
+  use: 'Professional LED display solutions.',
+  color: '#236498',
+  manualUrl: null,
+  link: null,
+  image: null
+},
 
-  {
-    brand: 'cletech',
-    group: 'interactive',
-    title: 'Interactive Meeting Display',
-    use: 'Collaboration, whiteboarding, and presentations in training and meeting rooms.',
-    color: '#5c6774',
-    manualUrl: null,
-    link: null,
-    image: null
-  },
+
 
   {
     brand: 'par',
-    group: 'indoor',
+    
     title: 'Professional AV Solutions',
     use: 'Professional display and audio systems for commercial projects and events.',
     color: '#27476d',
@@ -743,6 +1250,8 @@ const products = [
     link: null,
     image: null
   },
+      
+
 
   {
     brand: 'everyvue',
@@ -766,6 +1275,21 @@ const products = [
     image: null
   }
 ];
+
+
+/* =========================================================
+   PAR DRIVE-THRU
+   ========================================================= */
+
+/* =========================================================
+   PAR DRIVE-THRU
+   ========================================================= */
+
+const parDriveThru = {
+  name: 'PAR DRIVE-THRU SYSTEM',
+  description: 'Professional Drive-Thru communication and display solution.',
+  sheetUrl: 'samsung-pdfs/PAR_Presentation_pages_11_19.pdf'
+};
 
 
 /* =========================================================
@@ -876,15 +1400,62 @@ imageStyles.textContent = `
     word-break: break-all;
   }
 
-  /* Samsung lineup area */
-  .samsung-lineups-wrapper {
-    grid-column: 1 / -1;
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
-    margin-top: 8px;
+  /* Samsung + Fabulux lineup area */
+
+   .samsung-lineups-wrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.samsung-lineups-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.lineups-subtitle {
+  width: 100%;
+  margin-bottom: 4px;
+}
+ /* FABULUX GROUP NAVIGATION */
+.fabulux-group-nav {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 16px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  align-items: start;
+}
+
+.fabulux-group-nav .group-card {
+  width: 180px;
+  height: 180px;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  align-self: start;
+}
+
+.fabulux-group-nav .group-card.active {
+  border-color: #397ec0;
+}
+
+@media (max-width: 700px) {
+  .fabulux-group-nav {
+    grid-template-columns: repeat(2, 1fr);
   }
+
+  .fabulux-group-nav .group-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
 
   .samsung-lineups-title {
     grid-column: 1 / -1;
@@ -899,12 +1470,120 @@ imageStyles.textContent = `
     width: 100%;
   }
 
+  .lineup-category {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    opacity: .6;
+  }
+
+  .lineup-features {
+    margin: 12px 0;
+    padding-left: 18px;
+  }
+
+  .lineup-features li {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  .lineup-sheet-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    color: inherit;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    transition: .2s;
+  }
+
+  .lineup-sheet-link:hover {
+    border-color: #397ec0;
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 700px) {
     .samsung-lineups-wrapper {
       grid-template-columns: 1fr;
     }
   }
+    /* DAHUA LINEUPS */
+/* DAHUA LINEUPS — SAME SIZE AS SAMSUNG */
+
+.dahua-lineups-wrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.dahua-lineups-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dahua-lineup-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  .dahua-lineups-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+}
+  .peerless-lineups-wrapper {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.peerless-lineups-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.peerless-lineups-grid .samsung-lineup-card {
+  width: 100%;
+}
+
+.lineup-products {
+  margin-top: 10px;
+  font-size: 9px;
+  line-height: 1.5;
+  opacity: .55;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .peerless-lineups-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+  .lineup-sheets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.lineup-sheets .lineup-sheet-link {
+  margin-top: 0;
+}
 `;
+
 
 document.head.appendChild(imageStyles);
 
@@ -941,7 +1620,64 @@ function renderBrands(active) {
   `).join('');
 }
 
+function renderParDriveThru() {
+  const brand = brandById('par');
 
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / Drive-Thru`;
+
+  groupGrid.innerHTML = `
+    <div class="samsung-lineups-wrapper">
+
+      <div class="samsung-lineups-title">
+        PAR / DRIVE-THRU SYSTEM
+      </div>
+
+      <div class="group-card samsung-lineup-card">
+
+        <span>01</span>
+
+        <h3>${parDriveThru.name}</h3>
+
+        <p>
+          ${parDriveThru.description}
+        </p>
+
+        ${
+          parDriveThru.sheetUrl
+            ? `
+              <a
+                href="${parDriveThru.sheetUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lineup-sheet-link"
+              >
+                View Data Sheet ↗
+              </a>
+            `
+            : ''
+        }
+
+        <b>↗</b>
+
+      </div>
+
+    </div>
+  `;
+
+  groupGrid.style.gridTemplateColumns =
+    window.innerWidth < 700
+      ? 'repeat(2, 1fr)'
+      : 'repeat(3, 1fr)';
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+
+  groupsSection.scrollIntoView({
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
 /* =========================================================
    SELECT BRAND
    ========================================================= */
@@ -949,8 +1685,19 @@ function renderBrands(active) {
 function selectBrand(id) {
 
   selectedBrandId = id;
+    const brand = brandById(id);
 
-  const brand = brandById(id);
+  if (id === 'par') {
+  renderParDriveThru();
+  return;
+}
+if (id === 'peerless') {
+
+    renderPeerlessLineups();
+
+    return;
+  }
+
 
   renderBrands(id);
 
@@ -962,12 +1709,21 @@ function selectBrand(id) {
       ? 'repeat(2, 1fr)'
       : 'repeat(3, 1fr)';
 
-  const availableGroups = groups.filter(group =>
-    products.some(product =>
-      product.brand === selectedBrandId &&
-      product.group === group.id
-    )
+  let availableGroups;
+
+if (selectedBrandId === 'fabulux') {
+  availableGroups = groups.filter(group =>
+    group.id === 'indoor' ||
+    group.id === 'outdoor'
   );
+} else {
+  availableGroups = groups.filter(group => 
+    products.some(product => 
+      product.brand === selectedBrandId && 
+      product.group === group.id 
+    ) 
+  );
+}
 
   groupGrid.innerHTML = availableGroups.map((group, index) => {
 
@@ -1007,30 +1763,21 @@ function selectBrand(id) {
 
 /* =========================================================
    SAMSUNG LINEUP GROUP RENDERER
-   Keeps the original GROUPS visible above the lineups
    ========================================================= */
 
-function renderSamsungLineups(lineups, groupName, showPdf = false) {
+function renderSamsungLineups(lineups, groupName, showProducts = false) {
 
   const brand = brandById('samsung');
 
   document.getElementById('selectedBrandLabel').textContent =
     `${brand.name} / ${groupName}`;
 
-  /*
-     IMPORTANT:
-     Do NOT replace groupGrid completely.
-
-     We keep the existing group buttons and append
-     the Samsung lineups underneath them.
-  */
-
   const lineupHTML = lineups.map((lineup, index) => {
 
     return `
       <div
         class="group-card samsung-lineup-card"
-        data-lineup="${lineup.id}"
+        data-samsung-lineup="${lineup.id}"
       >
 
         <span>
@@ -1046,7 +1793,7 @@ function renderSamsungLineups(lineups, groupName, showPdf = false) {
         </ul>
 
         ${
-          showPdf && lineup.sheetUrl
+          lineup.sheetUrl
             ? `
               <a
                 href="${lineup.sheetUrl}"
@@ -1055,7 +1802,7 @@ function renderSamsungLineups(lineups, groupName, showPdf = false) {
                 class="lineup-sheet-link"
                 onclick="event.stopPropagation();"
               >
-                View Line Up Sheet ↗
+                View Data Sheet ↗
               </a>
             `
             : ''
@@ -1068,42 +1815,52 @@ function renderSamsungLineups(lineups, groupName, showPdf = false) {
 
   }).join('');
 
+  // Remove only the previous lineup section
+  const existingLineups =
+    groupGrid.querySelector('.samsung-lineups-wrapper');
 
-  /*
-     The wrapper spans the full width of the group grid,
-     so all original groups stay ABOVE it.
-  */
+  if (existingLineups) {
+    existingLineups.remove();
+  }
 
-  const existingGroups = groupGrid.innerHTML;
-
-  groupGrid.innerHTML = `
-    ${existingGroups}
-
-    <div class="samsung-lineups-wrapper">
+  // Add lineup section WITHOUT removing the Group Cards
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div
+      class="samsung-lineups-wrapper"
+      data-lineup-view="samsung"
+    >
 
       <div class="samsung-lineups-title">
-        ${groupName} Lineups
+        SAMSUNG
+        <span>/</span>
+        ${groupName.toUpperCase()} LINEUPS
       </div>
 
-      ${lineupHTML}
+      <div class="lineups-subtitle">
+        Select a lineup to view its data sheet
+      </div>
+
+      <div class="samsung-lineups-grid">
+        ${
+          lineupHTML ||
+          `
+            <div class="empty-group">
+              <p>
+                ${groupName} lineup is being prepared.
+              </p>
+            </div>
+          `
+        }
+      </div>
 
     </div>
-  `;
-
-
-  groupGrid.style.gridTemplateColumns =
-    window.innerWidth < 700
-      ? 'repeat(2, 1fr)'
-      : 'repeat(3, 1fr)';
+  `);
 
   groupsSection.hidden = false;
   productsSection.hidden = true;
-
-  groupsSection.scrollIntoView({
-    behavior: 'smooth',
-    block: 'start'
-  });
 }
+
+
 
 
 /* =========================================================
@@ -1125,6 +1882,7 @@ function renderSamsungIndoorLineups() {
    ========================================================= */
 
 function renderSamsungOutdoorLineups() {
+
   renderSamsungLineups(
     samsungOutdoorLineups,
     'Outdoor',
@@ -1145,6 +1903,8 @@ function renderSamsungSemiOutdoorLineups() {
     true
   );
 }
+
+
 /* =========================================================
    RENDER SAMSUNG VIDEO WALL LINEUPS
    ========================================================= */
@@ -1156,10 +1916,239 @@ function renderSamsungVideoWallLineups() {
     'Video Wall',
     true
   );
-
 }
 
 
+/* =========================================================
+   RENDER SAMSUNG INTERACTIVE LINEUPS
+   ========================================================= */
+
+function renderSamsungInteractiveLineups() {
+
+  renderSamsungLineups(
+    samsungInteractiveLineups,
+    'Interactive',
+    true
+  );
+}
+/* =========================================================
+   DAHUA INDOOR LINEUPS
+   ========================================================= */
+
+function renderDahuaIndoorLineups() {
+
+  const brand = brandById('dahua');
+  const group = groupById('indoor');
+
+  const lineups = dahuaIndoorLineups;
+
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / ${group.name}`;
+
+  const lineupHTML = lineups.map((lineup, index) => {
+
+    return `
+      <div
+        class="group-card dahua-lineup-card"
+        data-dahua-lineup="${lineup.id}"
+      >
+
+        <span>
+          ${String(index + 1).padStart(2, '0')}
+        </span>
+
+        <h3>${lineup.name}</h3>
+
+        <ul class="lineup-features">
+          ${lineup.features.map(feature => `
+            <li>${feature}</li>
+          `).join('')}
+        </ul>
+
+        ${
+          lineup.sheetUrl
+            ? `
+              <a
+                href="${lineup.sheetUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lineup-sheet-link"
+                onclick="event.stopPropagation();"
+              >
+                View Data Sheet ↗
+              </a>
+            `
+            : ''
+        }
+
+        <b>↗</b>
+
+      </div>
+    `;
+
+  }).join('');
+
+  const existingLineups =
+    groupGrid.querySelector('.dahua-lineups-wrapper');
+
+  if (existingLineups) {
+    existingLineups.remove();
+  }
+
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div
+      class="dahua-lineups-wrapper"
+      data-lineup-view="dahua"
+    >
+
+      <div class="samsung-lineups-title">
+        DAHUA
+        <span>/</span>
+        INDOOR LINEUPS
+      </div>
+
+      <div class="lineups-subtitle">
+        Select a lineup to view its data sheet
+      </div>
+
+      <div class="dahua-lineups-grid">
+
+        ${
+          lineupHTML ||
+          `
+            <div class="empty-group">
+              <p>
+                Indoor lineup is being prepared.
+              </p>
+            </div>
+          `
+        }
+
+      </div>
+
+    </div>
+  `);
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+}
+
+/* =========================================================
+   RENDER FABULUX LINEUPS
+   ========================================================= */
+
+
+
+function renderFabuluxLineups(groupId) {
+
+  const brand = brandById('fabulux');
+  const group = groupById(groupId);
+
+  let lineups = [];
+
+  if (groupId === 'indoor') {
+    lineups = fabuluxIndoorLineups;
+  }
+
+  if (groupId === 'outdoor') {
+    lineups = fabuluxOutdoorLineups;
+  }
+
+  document.getElementById('selectedBrandLabel').textContent =
+    `${brand.name} / ${group.name}`;
+
+  const lineupHTML = lineups.map((lineup, index) => {
+
+    return `
+      <div
+        class="group-card samsung-lineup-card"
+        data-fabulux-lineup="${lineup.id}"
+      >
+
+        <span>
+          ${String(index + 1).padStart(2, '0')}
+        </span>
+
+        <h3>${lineup.name}</h3>
+
+        <ul class="lineup-features">
+          ${lineup.features.map(feature => `
+            <li>${feature}</li>
+          `).join('')}
+        </ul>
+
+        ${
+          lineup.sheetUrl
+            ? `
+              <a
+                href="${lineup.sheetUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="lineup-sheet-link"
+                onclick="event.stopPropagation();"
+              >
+                View Data Sheet ↗
+              </a>
+            `
+            : ''
+        }
+
+        <b>↗</b>
+
+      </div>
+    `;
+
+  }).join('');
+
+  // Remove only the previous lineup section
+  const existingLineups =
+    groupGrid.querySelector('.samsung-lineups-wrapper');
+
+  if (existingLineups) {
+    existingLineups.remove();
+  }
+
+  // Add the new lineup section WITHOUT removing the Group Cards
+  groupGrid.insertAdjacentHTML('beforeend', `
+    <div
+      class="samsung-lineups-wrapper"
+      data-lineup-view="fabulux"
+    >
+
+      <div class="samsung-lineups-title">
+        FABULUX LED
+        <span>/</span>
+        ${group.name.toUpperCase()} LINEUPS
+      </div>
+
+      <div class="lineups-subtitle">
+        Select a lineup to view its data sheet
+      </div>
+
+      <div class="samsung-lineups-grid">
+        ${
+          lineupHTML ||
+          `
+            <div class="empty-group">
+              <p>
+                ${group.name} lineup is being prepared.
+              </p>
+            </div>
+          `
+        }
+      </div>
+
+    </div>
+  `);
+
+  groupsSection.hidden = false;
+  productsSection.hidden = true;
+}
+
+
+
+/*
+```js
 /* =========================================================
    SELECT GROUP
    ========================================================= */
@@ -1168,6 +2157,101 @@ function selectGroup(groupId) {
 
   const brand = brandById(selectedBrandId);
   const group = groupById(groupId);
+
+
+  /* =======================================================
+     SAMSUNG LINEUPS
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'indoor'
+  ) {
+    renderSamsungIndoorLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'outdoor'
+  ) {
+    renderSamsungOutdoorLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'semi-outdoor'
+  ) {
+    renderSamsungSemiOutdoorLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'videowall'
+  ) {
+    renderSamsungVideoWallLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'interactive'
+  ) {
+    renderSamsungInteractiveLineups();
+    return;
+  }
+
+
+  /* =======================================================
+     FABULUX LINEUPS
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'fabulux' &&
+    (
+      groupId === 'indoor' ||
+      groupId === 'outdoor'
+    )
+  ) {
+    renderFabuluxLineups(groupId);
+    return;
+  }
+
+
+  /* =======================================================
+     DAHUA LINEUPS
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'dahua' &&
+    groupId === 'indoor'
+  ) {
+    renderDahuaIndoorLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'dahua' &&
+    groupId === 'videowall'
+  ) {
+    renderDahuaVideoWallLineups();
+    return;
+  }
+
+  if (
+    selectedBrandId === 'dahua' &&
+    groupId === 'led'
+  ) {
+    renderDahuaLedLineups();
+    return;
+  }
+
+
+  /* =======================================================
+     NORMAL PRODUCTS
+     ======================================================= */
 
   const list = products.filter(product =>
     product.brand === selectedBrandId &&
@@ -1216,7 +2300,7 @@ function selectGroup(groupId) {
                   <img
                     class="product-image"
                     src="${image}"
-                    alt="${product.title} ${product.code}"
+                    alt="${product.title} ${product.code || ''}"
                     loading="lazy"
                     onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
                   >
@@ -1274,6 +2358,7 @@ function selectGroup(groupId) {
 }
 
 
+
 /* =========================================================
    BRAND CLICK
    ========================================================= */
@@ -1288,12 +2373,137 @@ grid.addEventListener('click', event => {
   selectBrand(button.dataset.brand);
 });
 
-
 /* =========================================================
    GROUP CLICK
    ========================================================= */
 
 groupGrid.addEventListener('click', event => {
+  if (event.target.closest('.lineup-sheet-link')) {
+    return;
+  }
+  /* =======================================================
+     FABULUX GROUP SWITCH
+     ======================================================= */
+
+  const fabuluxGroupButton =
+    event.target.closest('[data-fabulux-group]');
+
+  if (fabuluxGroupButton) {
+
+    const groupId =
+      fabuluxGroupButton.dataset.fabuluxGroup;
+
+    if (selectedBrandId === 'fabulux') {
+
+      renderFabuluxLineups(groupId);
+
+      return;
+    }
+  }
+
+
+  /* =======================================================
+     FABULUX LINEUP CLICK
+     ======================================================= */
+/* =======================================================
+   FABULUX LINEUP CLICK
+   OPEN DATA SHEET DIRECTLY
+   ======================================================= */
+
+const fabuluxLineupCard =
+  event.target.closest('[data-fabulux-lineup]');
+
+if (fabuluxLineupCard) {
+
+  const lineupId =
+    fabuluxLineupCard.dataset.fabuluxLineup;
+
+  let lineup = null;
+
+  if (selectedBrandId === 'fabulux') {
+
+    lineup =
+      fabuluxIndoorLineups.find(
+        item => item.id === lineupId
+      ) ||
+
+      fabuluxOutdoorLineups.find(
+        item => item.id === lineupId
+      );
+  }
+
+  if (!lineup) return;
+
+  if (lineup.sheetUrl) {
+
+    window.open(
+      lineup.sheetUrl,
+      '_blank',
+      'noopener,noreferrer'
+    );
+
+  }
+
+  return;
+}
+
+
+  /* =======================================================
+     DAHUA VIDEO WALL LINEUP CLICK
+     ======================================================= */
+
+  const dahuaVideoWallLineupCard =
+    event.target.closest('[data-dahua-videowall-lineup]');
+
+  if (dahuaVideoWallLineupCard) {
+
+    const lineupId =
+      dahuaVideoWallLineupCard.dataset.dahuaVideowallLineup;
+
+    if (
+      selectedBrandId === 'dahua' &&
+      lineupId === 'dahua-video-wall'
+    ) {
+
+      selectGroup('videowall');
+
+      return;
+    }
+  }
+/* DAHUA LED LINEUP CLICK */
+
+const dahuaLedLineupCard =
+  event.target.closest('[data-dahua-led-lineup]');
+
+if (dahuaLedLineupCard) {
+
+  const lineupId =
+    dahuaLedLineupCard.dataset.dahuaLedLineup;
+
+  if (selectedBrandId === 'dahua') {
+
+    const lineup =
+      dahuaLedLineups.find(
+        item => item.id === lineupId
+      );
+
+    if (lineup && lineup.sheetUrl) {
+
+      window.open(
+        lineup.sheetUrl,
+        '_blank',
+        'noopener,noreferrer'
+      );
+
+    }
+  }
+
+  return;
+}
+
+  /* =======================================================
+     NORMAL GROUP BUTTON
+     ======================================================= */
 
   const button =
     event.target.closest('[data-group]');
@@ -1304,7 +2514,65 @@ groupGrid.addEventListener('click', event => {
     button.dataset.group;
 
 
-  /* SAMSUNG INDOOR */
+  /* =======================================================
+     DAHUA INDOOR
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'dahua' &&
+    groupId === 'indoor'
+  ) {
+
+    renderDahuaIndoorLineups();
+
+    return;
+  }
+
+
+  /* =======================================================
+     DAHUA VIDEO WALL
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'dahua' &&
+    groupId === 'videowall'
+  ) {
+
+    renderDahuaVideoWallLineups();
+
+    return;
+  }
+
+/* DAHUA LED */
+
+if (
+  selectedBrandId === 'dahua' &&
+  groupId === 'led'
+) {
+  renderDahuaLedLineups();
+  return;
+}
+  /* =======================================================
+     FABULUX LED
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'fabulux' &&
+    (
+      groupId === 'indoor' ||
+      groupId === 'outdoor'
+    )
+  ) {
+
+    renderFabuluxLineups(groupId);
+
+    return;
+  }
+
+
+  /* =======================================================
+     SAMSUNG INDOOR
+     ======================================================= */
 
   if (
     selectedBrandId === 'samsung' &&
@@ -1317,7 +2585,24 @@ groupGrid.addEventListener('click', event => {
   }
 
 
-  /* SAMSUNG VIDEO WALL */
+  /* =======================================================
+     SAMSUNG INTERACTIVE
+     ======================================================= */
+
+  if (
+    selectedBrandId === 'samsung' &&
+    groupId === 'interactive'
+  ) {
+
+    renderSamsungInteractiveLineups();
+
+    return;
+  }
+
+
+  /* =======================================================
+     SAMSUNG VIDEO WALL
+     ======================================================= */
 
   if (
     selectedBrandId === 'samsung' &&
@@ -1329,9 +2614,10 @@ groupGrid.addEventListener('click', event => {
     return;
   }
 
-  // باقي الكود عندك...س
 
-  /* SAMSUNG OUTDOOR */
+  /* =======================================================
+     SAMSUNG OUTDOOR
+     ======================================================= */
 
   if (
     selectedBrandId === 'samsung' &&
@@ -1344,8 +2630,9 @@ groupGrid.addEventListener('click', event => {
   }
 
 
-
-  /* SAMSUNG SEMI-OUTDOOR */
+  /* =======================================================
+     SAMSUNG SEMI-OUTDOOR
+     ======================================================= */
 
   if (
     selectedBrandId === 'samsung' &&
@@ -1358,12 +2645,13 @@ groupGrid.addEventListener('click', event => {
   }
 
 
-  /* ALL OTHER BRANDS / GROUPS */
+  /* =======================================================
+     ALL OTHER BRANDS / GROUPS
+     ======================================================= */
 
   selectGroup(groupId);
 
 });
-
 
 /* =========================================================
    BACK TO GROUPS
@@ -1426,8 +2714,6 @@ productGrid.addEventListener('click', event => {
     product.color || '#224d75';
 
 
-  /* Replace old screen shape with actual product image */
-
   if (product.image) {
 
     modalVisual.innerHTML = `
@@ -1438,7 +2724,7 @@ productGrid.addEventListener('click', event => {
       <img
         class="modal-product-image"
         src="${product.image}"
-        alt="${product.title} ${product.code}"
+        alt="${product.title} ${product.code || ''}"
         onerror="this.style.display='none';"
       >
     `;
@@ -1657,4 +2943,3 @@ if (
   selectBrand(requestedBrand);
 
 }
-
