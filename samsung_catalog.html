@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SAMSUNG professional display product catalog from MixGT.">
+<title>MixGT | SAMSUNG Displays</title>
+<style>
+:root{--ink:#101820;--muted:#687482;--line:#dfe5ea;--paper:#f7f9fb;--blue:#397ec0}
+*{box-sizing:border-box} body{margin:0;color:var(--ink);font-family:Arial,Helvetica,sans-serif;background:#fff}
+a{color:inherit} .header{display:flex;justify-content:space-between;align-items:center;padding:24px 7vw;border-bottom:1px solid var(--line)}
+.brand{font-weight:800;letter-spacing:-.05em;font-size:24px} .brand span{color:var(--blue)} .back{text-decoration:none;font-size:13px}
+.hero{padding:80px 7vw 55px;background:linear-gradient(135deg,#f6f9fc,#fff)} .eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#5584b5;font-weight:700}
+h1{font-size:clamp(42px,6vw,78px);line-height:.95;letter-spacing:-.06em;margin:16px 0} h1 em{font-style:normal;color:#64717d}
+.hero p{max-width:650px;color:var(--muted);line-height:1.7}
+.section{padding:55px 7vw} .section-title{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:22px}
+.section-title span{color:var(--muted);font-size:12px} .group-grid,.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.group{min-height:170px;border:1px solid var(--line);background:var(--paper);padding:22px;text-align:left;cursor:pointer;transition:.2s;position:relative}
+.group:hover{transform:translateY(-4px);border-color:#4c89cd;box-shadow:0 15px 34px rgba(12,20,32,.09)}
+.group h3{font-size:23px;margin:35px 0 10px;letter-spacing:-.05em} .group p{font-size:11px;color:var(--muted);line-height:1.6}
+.group b{position:absolute;right:20px;bottom:18px;color:var(--blue)} .products-heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:25px}
+h2{font-size:40px;letter-spacing:-.05em;margin:8px 0} .backbtn{border:1px solid var(--line);background:white;padding:11px 15px;cursor:pointer}
+.product{border:1px solid var(--line);background:#fff;padding:18px;min-height:270px;display:flex;flex-direction:column}
+.visual{height:130px;background:linear-gradient(145deg,#111820,#27313b);display:flex;align-items:center;justify-content:center;margin-bottom:17px;position:relative;overflow:hidden}
+.screen{width:74%;height:65%;border:5px solid #1e252c;background:linear-gradient(135deg,#1b6fae,#08131e);box-shadow:0 7px 0 #111;border-radius:2px}
+.badge{position:absolute;top:9px;left:9px;color:#fff;font-size:9px;letter-spacing:.08em;text-transform:uppercase;background:rgba(0,0,0,.35);padding:6px 8px}
+.product small{color:#5584b5;font-weight:700;font-size:10px} .product h3{margin:7px 0 4px;font-size:20px;letter-spacing:-.04em}
+.code{font:10px monospace;color:var(--muted);margin-bottom:14px;word-break:break-all}
+.actions{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:8px} .actions a{text-decoration:none;text-align:center;padding:10px 8px;font-size:11px;font-weight:700;border:1px solid var(--line)}
+.actions a:first-child{background:#101820;color:white;border-color:#101820} .actions a:hover{opacity:.82}
+.empty{padding:30px;background:var(--paper);color:var(--muted)} .hidden{display:none}
+.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:25px;z-index:20} .modal.open{display:flex}
+.modal-bg{position:absolute;inset:0;background:rgba(8,15,22,.58)} .modal-card{position:relative;z-index:1;background:#fff;max-width:850px;width:100%;display:grid;grid-template-columns:40% 60%;box-shadow:0 25px 70px rgba(0,0,0,.25);max-height:90vh;overflow:auto}
+.modal-visual{min-height:430px;background:linear-gradient(145deg,#0e151c,#2e3a45);display:flex;align-items:center;justify-content:center;position:relative}
+.modal-visual .screen{width:78%;height:45%;border-width:8px} .modal-content{padding:40px} .modal-content h2{font-size:38px}
+.modal-content p{color:var(--muted);line-height:1.7} .detail{margin-top:25px;border-top:1px solid var(--line);padding-top:18px}
+.detail-row{display:flex;justify-content:space-between;gap:20px;padding:8px 0;font-size:12px;border-bottom:1px solid #eef1f3} .detail-row b{font-weight:700}
+.modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:25px} .modal-actions a{padding:13px;text-align:center;text-decoration:none;border:1px solid var(--line);font-weight:700;font-size:12px}
+.modal-actions a:first-child{background:#101820;color:#fff;border-color:#101820} .close{position:absolute;right:14px;top:10px;border:0;background:transparent;font-size:30px;cursor:pointer;z-index:2}
+@media(max-width:850px){.group-grid,.product-grid{grid-template-columns:repeat(2,1fr)} .modal-card{grid-template-columns:1fr} .modal-visual{min-height:220px}}
+@media(max-width:520px){.group-grid,.product-grid{grid-template-columns:1fr} .header,.hero,.section{padding-left:6vw;padding-right:6vw}}
+</style>
+</head>
+<body>
+<header class="header"><div class="brand">MIX<span>GT</span></div><a class="back" href="index.html">Back to home ↗</a></header>
+<main>
+<section class="hero"><div class="eyebrow">MIXGT / SAMSUNG</div><h1>SAMSUNG displays<br><em>by application.</em></h1><p>Choose a product type to browse the Samsung displays from the supplied product sheet. Open any display for its Samsung product page or its PDF information sheet.</p></section>
+<section class="section">
+  <div class="section-title"><div><div class="eyebrow">01 / Product type</div><h2>Choose a group</h2></div><span>31 displays available in the supplied Samsung sheet</span></div>
+  <div class="group-grid" id="groups"></div>
+</section>
+<section class="section hidden" id="productsSection">
+  <div class="products-heading"><div><div class="eyebrow">02 / Available displays</div><h2 id="selectedGroup"></h2></div><button class="backbtn" id="backBtn">← Back to groups</button></div>
+  <div class="product-grid" id="products"></div>
+</section>
+</main>
+<div class="modal" id="modal">
+  <div class="modal-bg" id="modalBg"></div>
+  <section class="modal-card">
+    <button class="close" id="close">×</button>
+    <div class="modal-visual"><span class="badge" id="mCat"></span><div class="screen"></div></div>
+    <div class="modal-content">
+      <div class="eyebrow">SAMSUNG DISPLAY</div><h2 id="mTitle"></h2>
+      <p>Product information from the supplied Samsung product sheet.</p>
+      <div class="detail">
+        <div class="detail-row"><span>Long Code</span><b id="mCode"></b></div>
+        <div class="detail-row"><span>Type</span><b id="mType"></b></div>
+      </div>
+      <div class="modal-actions"><a id="mLink" target="_blank" rel="noopener">Open screen link ↗</a><a id="mPdf" target="_blank">Open PDF ↗</a></div>
+    </div>
+  </section>
+</div>
+<script>
+const PRODUCTS = [{"no": 1, "name": "OM55N-D", "code": "LH55OMNDPGB/EN", "link": "https://www.samsung.com/ie/smart-signage/outdoor-signage/windowdisplay-omn-d-series-lh55omndpgb-en/", "category": "Semi Outdoor", "pdf": "samsung-pdfs/OM55N-D_LH55OMNDPGB_EN.pdf"}, {"no": 2, "name": "WM85B", "code": "LH85WMBWLGCXUE", "link": "https://www.samsung.com/sa_en/business/smart-signage/interactive-display/flip-pro-wm85b-interactive-display-lh85wmbwlgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WM85B_LH85WMBWLGCXUE.pdf"}, {"no": 3, "name": "WM75B", "code": "LH75WMBWLGCXUE", "link": "https://www.samsung.com/sa_en/business/smart-signage/interactive-display/flip-pro-wm75b-interactive-display-lh75wmbwlgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WM75B_LH75WMBWLGCXUE.pdf"}, {"no": 5, "name": "OM55B", "code": "LH55OMBEBGBXUE", "link": "https://www.samsung.com/sa_en/business/smart-signage/video-wall/vmb-u-fhd-1080p-500nit-ip5x-35mm-lh55vmbubgbxue/", "category": "Indoor", "pdf": "samsung-pdfs/OM55B_LH55OMBEBGBXUE.pdf"}, {"no": 6, "name": "QM55B-T", "code": "LH55QMBTBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh55qmcebgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/QM55B-T_LH55QMBTBGCXUE.pdf"}, {"no": 7, "name": "QM43B-T", "code": "LH43QMBTBGCXUE", "link": "https://www.samsung.com/sa_en/business/smart-signage/interactive-display/qmb-t-uhd-4k-capacitive-touch-8ms-lh43qmbtbgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/QM43B-T_LH43QMBTBGCXUE.pdf"}, {"no": 8, "name": "VM46B-U", "code": "LH46VMBUBGBXUE", "link": "https://www.samsung.com/ae/smart-signage/video-wall/vmb-u-46-inch-fhd-1080p-500nit-ip5x-35mm-lh46vmbubgbxue/", "category": "Video Wall", "pdf": "samsung-pdfs/VM46B-U_LH46VMBUBGBXUE.pdf"}, {"no": 9, "name": "VH55C-R", "code": "LH55VHCRBGBXUE", "link": "https://www.samsung.com/sa_en/smart-signage/video-wall/vhr-r-55-inch-fhd-1080p-700nit-ip5x-0-88mm-lh55vhrrbgbxue/", "category": "Video Wall", "pdf": "samsung-pdfs/VH55C-R_LH55VHCRBGBXUE.pdf"}, {"no": 10, "name": "VM55C-R", "code": "LH55VMCRBGBXUE", "link": "https://www.samsung.com/eg/business/smart-signage/video-wall/vmb-r-fhd-1080p-500nit-ip5x-088mm-lh55vmbrbgbxue/", "category": "Video Wall", "pdf": "samsung-pdfs/VM55C-R_LH55VMCRBGBXUE.pdf"}, {"no": 11, "name": "VM55B-R", "code": "LH55VMBRBGBXUE", "link": "https://www.samsung.com/eg/business/smart-signage/video-wall/vmb-r-fhd-1080p-500nit-ip5x-088mm-lh55vmbrbgbxue/", "category": "Video Wall", "pdf": "samsung-pdfs/VM55B-R_LH55VMBRBGBXUE.pdf"}, {"no": 12, "name": "VM55B-U", "code": "LH55VMBUBGBXUE", "link": "https://www.samsung.com/ae/smart-signage/video-wall/vmb-u-46-inch-fhd-1080p-500nit-ip5x-35mm-lh46vmbubgbxue/", "category": "Video Wall", "pdf": "samsung-pdfs/VM55B-U_LH55VMBUBGBXUE.pdf"}, {"no": 13, "name": "WA75F", "code": "LH75WAFWLGCXUE", "link": "https://www.samsung.com/levant/business/smart-signage/interactive-display/interactive-display-waf-lh75wafwlgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WA75F_LH75WAFWLGCXUE.pdf"}, {"no": 14, "name": "VM55C-E", "code": "LH55VMCEBGBXUE", "link": "https://www.samsung.com/my/business/smart-signage/video-wall/vmc-e-extreme-narrow-bezel-video-wall-fhd-1080p-500nit-ip5x-174mm-lh55vmcebgbxxs/?srsltid=AfmBOopVN12SHL4Lg_AF7cgwmnnIF7jcUpJGvoRt0QUj7sCXSzLO2AKY", "category": "Video Wall", "pdf": "samsung-pdfs/VM55C-E_LH55VMCEBGBXUE.pdf"}, {"no": 15, "name": "QM55C", "code": "LH55QMCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh55qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM55C_LH55QMCEBGCXUE.pdf"}, {"no": 16, "name": "OH55DX", "code": "LH55OHDEBGBXUE", "link": "https://www.samsung.com/ae/smart-signage/outdoor-signage/outdoor-signage-oh55a-55-inch-smart-signage-oh55a-lh55ohaebgbxue/", "category": "Outdoor", "pdf": "samsung-pdfs/OH55DX_LH55OHDEBGBXUE.pdf"}, {"no": 17, "name": "WA86F", "code": "LH56WAFWLGCXUE", "link": "https://www.samsung.com/sa_en/smart-signage/interactive-display/waf-65-inch-lh65wafwlgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WA86F_LH56WAFWLGCXUE.pdf"}, {"no": 18, "name": "QM85C", "code": "LH85QMCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh85qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM85C_LH85QMCEBGCXUE.pdf"}, {"no": 19, "name": "QM75C", "code": "LH75QMCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh85qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM75C_LH75QMCEBGCXUE.pdf"}, {"no": 20, "name": "QH50C", "code": "LH50QHCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qhc-lh50qhcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QH50C_LH50QHCEBGCXUE.pdf"}, {"no": 21, "name": "WA65F", "code": "LH65WAFWLGCXUE", "link": "https://www.samsung.com/levant/business/smart-signage/interactive-display/interactive-display-waf-lh65wafwlgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WA65F_LH65WAFWLGCXUE.pdf"}, {"no": 22, "name": "WM65B", "code": "LH65WMBWBGCXUE", "link": "https://www.samsung.com/levant/business/smart-signage/interactive-display/flip-pro-wm65b-interactive-display-lh65wmbwbgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WM65B_LH65WMBWBGCXUE.pdf"}, {"no": 23, "name": "OH55A-S", "code": "LH55OHAOSGBXUE", "link": "https://www.samsung.com/ae/business/smart-signage/outdoor-signage/outdoor-signage-oh55a-s-fhd-4k-3500nit-ip5x-lh55ohaesgbxue/", "category": "Outdoor", "pdf": "samsung-pdfs/OH55A-S_LH55OHAOSGBXUE.pdf"}, {"no": 24, "name": "WM55B", "code": "LH55WMBWBGCXUE", "link": "https://www.samsung.com/sa_en/business/smart-signage/interactive-display/flip-pro-wm55b-interactive-display-lh55wmbwbgcxue/", "category": "Interactive", "pdf": "samsung-pdfs/WM55B_LH55WMBWBGCXUE.pdf"}, {"no": 25, "name": "QM43C", "code": "LH43QMCEPGCXUE", "link": "https://www.samsung.com/levant/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh43qmcepgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM43C_LH43QMCEPGCXUE.pdf"}, {"no": 26, "name": "QM65C", "code": "LH65QMCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh65qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM65C_LH65QMCEBGCXUE.pdf"}, {"no": 27, "name": "QM50C", "code": "LH50QMCEPGCXUE", "link": "https://www.samsung.com/levant/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh50qmcepgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM50C_LH50QMCEPGCXUE.pdf"}, {"no": 28, "name": "QM32C", "code": "LH32QMCEBGCXUE", "link": "https://www.samsung.com/ae/business/smart-signage/uhd-4k-signage/crystal-uhd-signage-qmc-lh32qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM32C_LH32QMCEBGCXUE.pdf"}, {"no": 29, "name": "OH24B", "code": "LH24OHBEBGBXUE", "link": "https://www.samsung.com/uk/business/smart-signage/outdoor-signage/outdoor-signage-oh24b-fhd-1500nit-ip66-lh24ohbebgbxen/", "category": "Outdoor", "pdf": "samsung-pdfs/OH24B_LH24OHBEBGBXUE.pdf"}, {"no": 30, "name": "SH37C", "code": "LH37SHCEBGBXUE", "link": "http://samsung.com/ie/business/smart-signage/others/stretched-display-sh37c-lh37shcebgbxen/", "category": "Indoor", "pdf": "samsung-pdfs/SH37C_LH37SHCEBGBXUE.pdf"}, {"no": 31, "name": "QM98C", "code": "LH98QMCEBGCXUE", "link": "https://www.samsung.com/sa_en/smart-signage/uhd-4k-signage/uhd-signage-qm98c-98-inch-lh98qmcebgcxue/", "category": "Indoor", "pdf": "samsung-pdfs/QM98C_LH98QMCEBGCXUE.pdf"}, {"no": 32, "name": "QHFX", "code": "LH115QHFEBGXUE", "link": "https://www.samsung.com/sa_en/smart-signage/uhd-4k-signage/supersized-uhd-signage-qhfx-115-inch-portrait-antiglare-lh115qhfebgxue/", "category": "Indoor", "pdf": "samsung-pdfs/QHFX_LH115QHFEBGXUE.pdf"}];
+const categories = [...new Set(PRODUCTS.map(p => p.category))];
+const groups = document.getElementById('groups');
+const productsSection = document.getElementById('productsSection');
+const productsEl = document.getElementById('products');
+const selectedGroup = document.getElementById('selectedGroup');
+const modal = document.getElementById('modal');
+
+function showGroup(cat) {
+  selectedGroup.textContent = cat;
+  const list = PRODUCTS.filter(p => p.category === cat);
+  productsEl.innerHTML = list.length ? list.map(p => `
+    <article class="product">
+      <div class="visual"><span class="badge">${p.category}</span><div class="screen"></div></div>
+      <small>SAMSUNG</small><h3>${p.name}</h3><div class="code">${p.code}</div>
+      <div class="actions"><a href="${p.link}" target="_blank" rel="noopener">Screen link ↗</a><a href="${p.pdf}" target="_blank">PDF ↗</a></div>
+    </article>`).join('') : '<div class="empty">No displays found in this group.</div>';
+  productsSection.classList.remove('hidden');
+  productsSection.scrollIntoView({behavior:'smooth',block:'start'});
+}
+groups.innerHTML = categories.map(cat => {
+  const count = PRODUCTS.filter(p => p.category === cat).length;
+  return `<button class="group" onclick="showGroup('${cat.replace(/'/g,"\\'")}')"><div class="eyebrow">SAMSUNG</div><h3>${cat}</h3><p>${count} display${count===1?'':'s'} in the supplied sheet.</p><b>View →</b></button>`;
+}).join('');
+
+document.getElementById('backBtn').onclick = () => {
+  productsSection.classList.add('hidden');
+  document.querySelector('.section').scrollIntoView({behavior:'smooth'});
+};
+
+function openModal(p) {
+  document.getElementById('mCat').textContent = p.category;
+  document.getElementById('mTitle').textContent = p.name;
+  document.getElementById('mCode').textContent = p.code;
+  document.getElementById('mType').textContent = p.category;
+  document.getElementById('mLink').href = p.link;
+  document.getElementById('mPdf').href = p.pdf;
+  modal.classList.add('open');
+}
+document.getElementById('close').onclick = () => modal.classList.remove('open');
+document.getElementById('modalBg').onclick = () => modal.classList.remove('open');
+</script>
+</body>
+</html>
